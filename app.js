@@ -21,7 +21,7 @@ const errorHandlingMiddleware = require('./middlewares/errorHandling')
 const db = require('./models')
 
 const app = express()
-const port = process.env.HTTP_PORT || 3000
+const port = process.env.PORT || 3000
 
 app.use(express.static('client'))
 app.use(express.json())
