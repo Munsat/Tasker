@@ -4,7 +4,7 @@ import renderLeftPane from './renderLeftPane.js'
 import renderTaskDetails from './renderTaskDetails.js'
 
 const renderTasks = (tasksArray, projectTitle, projectID, user) => {
-  console.log(tasksArray)
+  // console.log(tasksArray)
   const contentDiv = document.getElementById('main-content')
   contentDiv.innerHTML = ''
   // this div contains list of tasks
@@ -113,7 +113,7 @@ const renderTasks = (tasksArray, projectTitle, projectID, user) => {
       deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>'
       taskDiv.appendChild(deleteButton)
       deleteButton.addEventListener('click', () => {
-        renderDeleteTask(task.id, projectTitle, projectID)
+        renderDeleteTask(task.id, projectTitle, projectID, user)
       })
 
       //arranges in kanban style

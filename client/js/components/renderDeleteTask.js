@@ -1,9 +1,6 @@
 import { renderTasks } from './renderTasks.js'
-const renderDeleteTask = async (taskId, projectTitle, projectID) => {
+const renderDeleteTask = async (taskId, projectTitle, projectID, user) => {
   const confirmed = confirm('Are you sure you want to delete this task?')
-  console.log(taskId)
-  console.log(projectTitle)
-  console.log(projectID)
 
   function deleteTask() {
     return axios

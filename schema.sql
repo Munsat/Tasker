@@ -35,6 +35,11 @@ CREATE TABLE tasks (
         FOREIGN KEY(project_id)
         REFERENCES projects(id)
         ON DELETE CASCADE,
+  user_id INT,
+        CONSTRAINT fk_tasks_users
+        FOREIGN KEY(user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE,      
   name VARCHAR(255) NOT NULL,
   description TEXT,
   creation_date DATE,

@@ -8,6 +8,7 @@ const {
   editTaskById,
   getTaskByProjectId,
   editTaskStatusById,
+  getTaskByUserId,
 } = require('../models/task')
 
 const router = express.Router()
@@ -29,7 +30,17 @@ router.get('/tasks/project/:id', (req, res, next) => {
   const id = Number(req.params.id)
   return getTaskByProjectId(id)
     .then((data) => {
-      console.log(data)
+      res.json(data)
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err.message })
+    })
+})
+
+router.get('/tasks/user/:id', (req, res, next) => {
+  const id = Number(req.params.id)
+  return getTaskByUserId(id)
+    .then((data) => {
       res.json(data)
     })
     .catch((err) => {
@@ -40,6 +51,7 @@ router.get('/tasks/project/:id', (req, res, next) => {
 router.post('/tasks', (req, res, next) => {
   const {
     project_id,
+    user_id,
     name,
     description,
     creation_date,
@@ -51,6 +63,7 @@ router.post('/tasks', (req, res, next) => {
 
   return createTask(
     project_id,
+    user_id,
     name,
     description,
     creation_date,

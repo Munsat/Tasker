@@ -78,6 +78,7 @@ const handleSubmitForm = (event, tasksArray, projectTitle, projectID, user) => {
 
   const data = {
     project_id: formData.get('project-id'),
+    user_id: user.id,
     name: formData.get('name'),
     description: formData.get('description'),
     creation_date: formData.get('creation-date'),
@@ -89,11 +90,12 @@ const handleSubmitForm = (event, tasksArray, projectTitle, projectID, user) => {
 
   return axios
     .post('/api/tasks', data)
-    .then((res) => {
-      const createdTask = JSON.parse(res.config.data)
-      tasksArray.push(createdTask)
-      console.log(tasksArray)
-      renderTasks(tasksArray, projectTitle, projectID, user)
+    .then(async(res) => {
+      const response =  await axios.get(`/api/tasks/project/${projectID}`)
+      // const createdTask = {id:res.data.id, ...data}
+      // tasksArray.push(createdTask)
+
+      renderTasks(response.data, projectTitle, projectID, user)
     })
     .catch((err) => {
       console.log(err)

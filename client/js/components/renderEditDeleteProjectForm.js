@@ -3,8 +3,10 @@ import { renderTasks } from './renderTasks.js'
 
 const renderEditDeleteProjectForm = async (project, user, tasksArray) => {
   const { collab } = project
-  const { data } = await axios.post('/api/users/multipleid/', collab)
-  const { emails } = data
+  // if (collab.length>0){
+  //   const { data } = await axios.post('/api/users/multipleid/', collab)
+  //   const { emails } = data
+  // }
 
   const oldDisplay = document.querySelector('.display-bg')
   if (oldDisplay) {
@@ -68,6 +70,8 @@ const renderEditDeleteProjectForm = async (project, user, tasksArray) => {
 
   if (project.task_type === 'group') {
     document.getElementById('collaborators-in-edit-project-form').style.display = 'block'
+    const { data } = await axios.post('/api/users/multipleid/', collab)
+    const { emails } = data
     for (let email of emails) {
       const newDiv = document.createElement('div')
       newDiv.innerText = email

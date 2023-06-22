@@ -22,6 +22,15 @@ const getTaskByProjectId = (id) => {
   )
 }
 
+const getTaskByUserId = (id) => {
+  return (
+    db
+      .query(`select * from tasks where user_id = ${id}`)
+      // rows is an array of object with all tasks info
+      .then((result) => result.rows)
+  )
+}
+
 // const getTasksByDueDate = (date) => {
 //     return db.query('select projects.name as project_name, tasks.* from tasks inner join projects on tasks.project_id = projects.id where tasks.due_date = $1', [date])
 //         .then(result => result.rows)
@@ -29,6 +38,7 @@ const getTaskByProjectId = (id) => {
 
 const createTask = (
   project_id,
+  user_id,
   name,
   description,
   creation_date,
@@ -37,9 +47,10 @@ const createTask = (
   priority_level,
   status
 ) => {
-  const sql = `INSERT INTO tasks (project_id, name, description, creation_date, due_date, due_time, priority_level, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;`
+  const sql = `INSERT INTO tasks (project_id, user_id, name, description, creation_date, due_date, due_time, priority_level, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;`
   const values = [
     project_id,
+    user_id,
     name,
     description,
     creation_date,
@@ -113,5 +124,6 @@ module.exports = {
   editTaskById,
   getTaskByProjectId,
   editTaskStatusById,
+  getTaskByUserId
   // getTasksByDueDate
 }

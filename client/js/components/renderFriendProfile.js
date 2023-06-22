@@ -5,28 +5,30 @@ const renderFriendProfile = (user) => {
   if (oldDisplay) {
     oldDisplay.remove()
   }
+  if (user.friends_array) {
+    user.friends_array.forEach((each) => {
+      axios.get(`/api/users/${each}`).then(({ data }) => {
+        if (data.user) {
+          const userName = data.user.user_name
+          const userEmail = data.user.email
+          const ul = document.createElement('ul')
+          ul.classList = 'list-group '
+          const crossBox = document.createElement('i')
+          crossBox.classList = `crossbox fa-solid fa-xmark`
+          crossBox.dataset.email = userEmail
+          crossBox.style.display = 'none'
+          const li = document.createElement('li')
+          li.classList = 'friend-list'
+          li.textContent = `${userName} - ${userEmail}`
 
-  user.friends_array.forEach((each) => {
-    axios.get(`/api/users/${each}`).then(({ data }) => {
-      if (data.user) {
-        const userName = data.user.user_name
-        const userEmail = data.user.email
-        const ul = document.createElement('ul')
-        ul.classList = 'list-group '
-        const crossBox = document.createElement('i')
-        crossBox.classList = `crossbox fa-solid fa-xmark`
-        crossBox.dataset.email = userEmail
-        crossBox.style.display = 'none'
-        const li = document.createElement('li')
-        li.classList = 'friend-list'
-        li.textContent = `${userName} - ${userEmail}`
-
-        ul.appendChild(li)
-        li.append(crossBox)
-        friendDiv.appendChild(ul)
-      }
+          ul.appendChild(li)
+          li.append(crossBox)
+          friendDiv.appendChild(ul)
+        }
+      })
     })
-  })
+  }
+
   const displayBg = document.createElement('div')
   displayBg.className = 'display-bg'
   const display = document.createElement('div')

@@ -14,7 +14,6 @@ const renderNewProjectForm = (projectCategory, user) => {
 
   const cancelIcon = document.createElement('i')
   cancelIcon.className = 'fa-solid fa-xmark cancel-icon'
-
   const newProjectForm = document.createElement('div')
   newProjectForm.innerHTML = `
     <form id="create-project-form" class="row g-3">
@@ -50,16 +49,19 @@ const renderNewProjectForm = (projectCategory, user) => {
   const collaboratorsFormField = document.getElementById('collaboratorsFormField')
   const listOfCollaborators = document.getElementById('listOfCollaborators')
   collaboratorsFormField.appendChild(listOfCollaborators)
-  for (let friend of user.friends_array) {
-    const newFriendCheckBox = document.createElement('div')
-    newFriendCheckBox.innerHTML = `
-        <input type="checkbox" id=${friend} name="collaborators" value=${friend}>
-        <label for=${friend}>${friend}</label>
-        `
-    listOfCollaborators.appendChild(newFriendCheckBox)
+  if (user.friends_array){
+    for (let friend of user.friends_array) {
+      const newFriendCheckBox = document.createElement('div')
+      newFriendCheckBox.innerHTML = `
+          <input type="checkbox" id=${friend} name="collaborators" value=${friend}>
+          <label for=${friend}>${friend}</label>
+          `
+      listOfCollaborators.appendChild(newFriendCheckBox)
+    }
   }
+  
 
-  cancelIcon.addEventListener('click', () => displayBg.remove())
+  document.querySelector('.cancel-icon').addEventListener('click', () => displayBg.remove())
   document.getElementById('create-project-form').addEventListener('submit', function (event) {
     handleFormSubmit(event, user)
   })
