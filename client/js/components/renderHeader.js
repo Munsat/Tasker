@@ -31,8 +31,8 @@ const renderHeader = (user) => {
     <nav class="navbar navbar-expand-sm nav-2" style="background-color: #2B3467">
         <div class="container-fluid">
         <a href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler custom-btn-toggler" style="border-color: white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon custom-toggler"></span>
         </button>        
             <div class="collapse navbar-collapse nav-underline justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">

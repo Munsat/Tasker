@@ -10,6 +10,8 @@ const renderComments = (
   tasksArray
 ) => {
   const commentParent = document.createElement('div')
+  commentParent.className='comment-holder'
+
   const commentHeader = document.createElement('h3')
   commentHeader.innerText = 'Comments'
   commentParent.appendChild(commentHeader)
@@ -50,6 +52,8 @@ const renderComments = (
   }
 
   const newCommentForm = document.createElement('div')
+  newCommentForm.className='comment-form'
+
   const creation_date = moment().format('YYYY-MM-DD')
   newCommentForm.innerHTML = `
     <form id="create-comment-form">
