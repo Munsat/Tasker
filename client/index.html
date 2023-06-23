@@ -28,41 +28,54 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script defer type="module" src="/js/init.js"></script>
+    <script defer src="/js/renderToggleChange.js"></script>
   </head>
 
   <body>
     <div id="body-content">
       <header id="header-nav"></header>
       <header id="lower-nav"></header>
-      <div id="left-pane">
-        <div id="personal-projects-list">
-          <p class="category-heading">
-            Personal
-            <span id="add-personal-project-btn" class="add-project-btn"
-              ><i class="fa-solid fa-square-plus"></i
-            ></span>
-          </p>
-          <ul id="personal-projects-list-ul"></ul>
-        </div>
+      <button
+        class="btn"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="true"
+        aria-controls="collapseExample"
+        id="toggle-button">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <div class="collapse show" id="collapseExample">
+        <div id="left-pane">
+          <div id="personal-projects-list">
+            <p class="category-heading">
+              Personal
+              <span id="add-personal-project-btn" class="add-project-btn"
+                ><i class="fa-solid fa-square-plus"></i
+              ></span>
+            </p>
+            <ul id="personal-projects-list-ul"></ul>
+          </div>
 
-        <div id="work-projects-list">
-          <p class="category-heading">
-            Work
-            <span id="add-work-project-btn" class="add-project-btn"
-              ><i class="fa-solid fa-square-plus"></i
-            ></span>
-          </p>
-          <ul id="work-projects-list-ul"></ul>
-        </div>
+          <div id="work-projects-list">
+            <p class="category-heading">
+              Work
+              <span id="add-work-project-btn" class="add-project-btn"
+                ><i class="fa-solid fa-square-plus"></i
+              ></span>
+            </p>
+            <ul id="work-projects-list-ul"></ul>
+          </div>
 
-        <div id="study-projects-list">
-          <p class="category-heading">
-            Study
-            <span id="add-study-project-btn" class="add-project-btn"
-              ><i class="fa-solid fa-square-plus"></i
-            ></span>
-          </p>
-          <ul id="study-projects-list-ul"></ul>
+          <div id="study-projects-list">
+            <p class="category-heading">
+              Study
+              <span id="add-study-project-btn" class="add-project-btn"
+                ><i class="fa-solid fa-square-plus"></i
+              ></span>
+            </p>
+            <ul id="study-projects-list-ul"></ul>
+          </div>
         </div>
       </div>
       <div id="main-content"></div>

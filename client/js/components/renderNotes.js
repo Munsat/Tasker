@@ -8,6 +8,8 @@ const renderNotes = (user_id) => {
     display.remove()
   }
   const mainContent = document.getElementById('main-content')
+  const noteContent = document.createElement('div')
+  noteContent.className='note-content'
   mainContent.innerHTML = ''
 
   axios
@@ -15,7 +17,7 @@ const renderNotes = (user_id) => {
     .then((response) => {
       const notes = response.data
       if (notes.length === 0) {
-        mainContent.classList -= 'kanban-notes'
+        noteContent.classList -= 'kanban-notes'
         const noNoteHolder = document.createElement('div')
         noNoteHolder.className = 'no-note-holder'
         const noNote = document.createElement('p')
@@ -30,10 +32,11 @@ const renderNotes = (user_id) => {
         })
         noNoteHolder.appendChild(noNote)
         noNoteHolder.appendChild(addButton)
-        mainContent.appendChild(noNoteHolder)
+        noteContent.appendChild(noNoteHolder)
+        mainContent.appendChild(noteContent)
         // noNote.appendChild(addButton)
       } else {
-        mainContent.className = 'kanban-notes'
+        noteContent.classList += ' kanban-notes'
         notes.forEach((note, i) => {
           const noteDiv = document.createElement('div')
           noteDiv.classList.add('note')
@@ -66,7 +69,8 @@ const renderNotes = (user_id) => {
           })
 
           noteDiv.appendChild(description)
-          mainContent.appendChild(noteDiv)
+          noteContent.appendChild(noteDiv)
+          mainContent.appendChild(noteContent)
 
           //add 'Delete' button for deleting a note
           const deleteNoteBtn = document.createElement('i')

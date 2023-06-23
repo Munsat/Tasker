@@ -33,6 +33,7 @@ body {
 #main-content {
   grid-area: 3/2/4/3;
   overflow-y: auto;
+  text-align: center
 }
 
 #left-pane {
@@ -44,6 +45,12 @@ body {
   background-color: #bad7e9;
   width: 20rem;
   min-width: 260px;
+  height: 100%;
+}
+
+#toggle-button{
+  background-color: #bad7e9;
+  border-radius: 0;
 }
 
 #sortListByToday,
@@ -263,12 +270,10 @@ body {
 /* Notes render */
 .note {
   position: relative;
-  padding: 10px;
-  margin: 10px;
   height: 250px;
   min-height: 200px;
-  width: 90%;
-  position: relative;
+  width: 30%;
+  max-width: 20rem;
   background: rgb(249, 249, 207);
   overflow: hidden;
   margin: 10px auto;
@@ -322,12 +327,20 @@ body {
 }
 
 .kanban-notes {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 40px;
+  grid-template-rows: 40px; */
+  display: flex;
+  flex-wrap: wrap;
+  gap:1rem;
   max-height: 99%;
   overflow: auto;
+  width: 100%;
+  /* min-width: 70rem;
+  max-width:80rem */
 }
+
+
 
 .creationDate {
   font-size: smaller;
@@ -364,7 +377,6 @@ body {
 }
 
 .add-button {
-  margin: 10px;
   border: gray;
   border-radius: 5px;
   cursor: pointer;
@@ -372,6 +384,7 @@ body {
   width: 250px;
   margin: 10px auto;
   grid-column: 1 / 4;
+
 }
 
 .category-heading {
@@ -494,4 +507,9 @@ body {
   background-color: #fbfded;
   margin: auto;
   text-align: center;
+}
+@media screen and (max-width: 600px) {
+.note{
+  width: 100%;
+}
 }
